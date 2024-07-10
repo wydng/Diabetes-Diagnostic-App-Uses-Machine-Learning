@@ -1,0 +1,101 @@
+{% extends 'index.html' %}
+{% block title %}Thông Tin{% endblock %}
+{% block content %}
+<section class="alerts"></section>
+<section class="banner-about"></section>
+<section class="patient">
+  <div class="container">
+    <h1>THÔNG TIN NGƯỜI BỆNH</h1>
+    <form action="{% url 'PatientInformation' %}" method="post">
+      {% csrf_token %}
+      <h2>THÔNG TIN</h2>
+      <div class="input-group">
+        <label for="fullname"><i class="fa-solid fa-user-tie"></i></label>
+        <input type="text" name="full_name" id="full_name" placeholder="Họ và tên" />
+      </div>
+      <div class="input-group">
+        <label for="age"><i class="fa-solid fa-calendar-days"></i></label>
+        <input type="number" id="age" name="age" placeholder="Tuổi" />
+      </div>
+      <div class="input-group">
+        <label for="gender"><i class="fa-solid fa-venus-mars"></i></label>
+        <input type="radio" name="gender" value="male" id="male" />
+        <label class="male" for="male">Nam</label>
+        <input type="radio" name="gender" value="female" id="female" />
+        <label class="female" for="female">Nữ</label>
+      </div>
+      <div class="input-group">
+        <label for="phone_number"><i class="fa-solid fa-phone"></i></label>
+        <input type="number" id="phone_number" name="phone_number" placeholder="Số điện thoại" />
+      </div>
+      <button type="submit">Xác nhận</button>
+    </form>
+  </div>
+</section>
+<script>
+  const alerts1 = document.querySelector(".alerts");
+  const patientForm = document.querySelector(".patient");
+  const fullName = document.getElementById("full_name");
+  const age = document.getElementById("age");
+  const male = document.getElementById("male");
+  const female = document.getElementById("female");
+  const phone = document.getElementById("phone_number");
+
+  patientForm.addEventListener("submit", function (e) {
+    if (full_name.value === "") {
+      e.preventDefault();
+      renderAlerts("Họ tên không được để trống");
+      alertsToggle()
+      return;
+    }
+    if (age.value === "") {
+      e.preventDefault();
+      renderAlerts("Tuổi không được để trống");
+      alertsToggle()
+      return;
+    }
+    if (age.value > 110 || age.value < 10 ) {
+      e.preventDefault();
+      renderAlerts("Nhập lại giá trị tuổi");
+      alertsToggle()
+      return;
+    }
+    if (!male.checked && !female.checked) {
+      e.preventDefault();
+      renderAlerts("Giới tính không được để trống");
+      alertsToggle()
+      return;
+    }
+    if (phone.value === "") {
+      e.preventDefault();
+      renderAlerts("Số điện thoại không được để trống");
+      alertsToggle()
+      return;
+    }
+    let str = "" + phone.value
+    if (str.startsWith("0") === false || str.length !== 10) {
+      e.preventDefault();
+      renderAlerts("Định dạng số điện thoại không đúng");
+      alertsToggle()
+      return;
+    }
+  });
+
+  function renderAlerts(str) {
+    let string = "";
+    string += `
+                <span><i class="fa-solid fa-triangle-exclamation"></i>${str}</span>
+            `;
+    alerts1.innerHTML = string;
+  }
+  function alertsToggle() {
+    alerts1.classList.remove("hide");
+    alerts1.style.backgroundColor = '#e41749'
+    alerts1.classList.add("show");
+    setTimeout(() => {
+      alerts1.classList.remove("show");
+      alerts1.classList.add("hide");
+    }, 2000);
+  }
+</script>
+{% endblock %}

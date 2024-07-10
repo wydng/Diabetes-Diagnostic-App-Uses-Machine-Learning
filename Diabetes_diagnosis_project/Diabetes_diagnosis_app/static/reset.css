@@ -1,0 +1,28 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul,
+ol{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+input,
+button{
+    outline: none;
+    border: none;
+    background: none;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}

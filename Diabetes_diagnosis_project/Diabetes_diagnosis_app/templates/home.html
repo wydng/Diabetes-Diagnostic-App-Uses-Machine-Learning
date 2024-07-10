@@ -1,0 +1,124 @@
+{% extends 'index.html' %} 
+{% block title %}Home{% endblock %} 
+{% block content %}
+<section class="banner">
+  <div class="container">
+    <div class="take-care">
+      <h3>Chúng Tôi Quan Tâm Và Bảo Vệ Sức Khỏe Của Bạn.</h3>
+      <p>Chúng Tôi Sẽ Giúp Tìm Lại Sức Khỏe Cho Mọi Người.</p>
+      <button><a href="{% url 'About' %}">Đọc thêm</a></button>
+    </div>
+  </div>
+</section>
+<section class="benefit">
+  <div class="container">
+    <div class="cards">
+      <div class="card">
+        <div class="content">
+          <span><i class="fa-solid fa-laptop-medical"></i></span>
+          <h3>Tiện lợi và tiện ích</h3>
+          <p>Cung cấp một công cụ đơn giản và dễ sử dụng.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="content">
+          <span><i class="fa-solid fa-user-doctor"></i></span>
+          <h3>Theo dõi sức khỏe</h3>
+          <p>Quản lý bệnh hiệu quả, cung cấp thông tin quan trọng.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="content">
+          <span><i class="fa-solid fa-book-medical"></i></span>
+          <h3>Giáo dục và tư vấn</h3>
+          <p>Cung cấp các tài nguyên và công cụ hiểu rõ về bệnh</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="content">
+          <span><i class="fa-solid fa-capsules"></i></span>
+          <h3>Hỗ trợ cộng đồng</h3>
+          <p>Cung cấp một diễn đàn nơi chia sẻ kiến thức và hỗ trợ.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <section class="info-user">
+  <div class="container">
+    <form action="">
+      <h3>THÔNG TIN</h3>
+      <div class="input-group">
+        <label for="">Họ và tên:</label>
+        <input type="text" placeholder="Tên của bạn" />
+      </div>
+      <div class="input-group">
+        <label for="">Liên lạc:</label>
+        <input type="number" placeholder="Số điện thoại" />
+      </div>
+      <div class="input-group">
+        <label for="">Địa chỉ:</label>
+        <input type="text" placeholder="Địa chỉ" />
+      </div>
+      <div class="input-group">
+        <label for="">Ngày sinh:</label>
+        <input type="date" />
+      </div>
+      <button>Xác nhận</button>
+    </form>
+  </div>
+</section> -->
+<section class="introduce">
+  <div class="container">
+    <div class="about">
+      <div class="img-frist">
+        <img
+          src="\static\img\360_F_177090077_M15nAafBNSKMEoeYwsqVPN9O36Eg5SaH.jpg"
+          alt=""
+        />
+      </div>
+      <div class="content">
+        <h3>Chẩn Đoán <br />Bệnh Tiểu Đường</h3>
+        <p>
+          Trang web chẩn đoán bệnh tiểu đường là công cụ hữu ích giúp người
+          dùng tự kiểm tra, theo dõi và quản lý sức khỏe của mình một cách hiệu
+          quả. Với tính tiện lợi và thông tin chính xác, trang web này đóng vai
+          trò quan trọng trong việc phát hiện sớm và giúp người dùng sống khỏe mạnh hơn.
+        </p>
+      </div>
+    </div>
+    <div class="standard">
+      <div class="accurate">
+        <h3><i class="fa-solid fa-hand-holding-medical"></i></h3>
+        <h4>Chính xác</h4>
+      </div>
+      <div class="safe">
+        <h3><i class="fa-solid fa-shield-virus"></i></h3>
+        <h4>An Toàn</h4>
+      </div>
+      <div class="create">
+        <h3><i class="fa-solid fa-vial-circle-check"></i></h3>
+        <h4>Sáng tạo</h4>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="rate">
+  <div class="container">
+    <div class="content">
+      <h2>Theo dõi dữ liệu</h2>
+      <span><i class="fa-solid fa-quote-left"></i></span>
+      <p>
+        Website có thể cung cấp chức năng ghi nhớ và theo dõi dữ liệu về sức
+        khỏe của người dùng. Thông qua việc tự động ghi lại thông tin, người
+        dùng có thể theo dõi tiến triển theo thời gian và nhận biết bất kỳ biến
+        động sức khỏe. Điều này giúp họ tự quản lý bệnh lý một cách hiệu quả hơn
+        và cung cấp thông tin quan trọng cho các chuyên gia y tế khi cần thiết.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

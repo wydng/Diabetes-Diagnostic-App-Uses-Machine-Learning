@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'reset.css'%}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="{% url 'home' %}">
+            <span>
+              <i class="fa-brands fa-meetup"></i>
+              edizin
+            </span>
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li class="h-home active">
+              <a href="{% url 'home' %}">TRANG CHỦ</a>
+            </li>
+            <li class="h-inf">
+              <a href="{% url 'PatientInformation' %}">CHẨN ĐOÁN</a>
+            </li>
+            <li class="h-inf">
+              <a href="{% url 'LoadInfo' %}">CHẨN ĐOÁN TỪ FILE</a>
+            </li>
+            <li class="h-staff"><a href="{% url 'Member' %}">THÀNH VIÊN</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    {% block content %} {% endblock %}
+    <section class="email">
+      <div class="container">
+        <h2>Đăng kí để nhận email cập nhập tin tức mới nhất</h2>
+        <div class="input-group">
+          <input type="text" placeholder="Nhập email" />
+          <button>Đăng kí</button>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="about">
+          <h3>GIỚI THIỆU</h3>
+          <p>
+            Cung cấp thông tin chi tiết về các dấu hiệu và triệu chứng của bệnh
+            tiểu đường, giúp người dùng nhận biết và nhận thức sớm về tình trạng
+            sức khỏe.
+          </p>
+        </div>
+        <div class="contact">
+          <h3>LIÊN HỆ</h3>
+          <div class="address">
+            <span><i class="fa-solid fa-location-dot"></i></span>
+            <p>140 Lê Trọng Tấn</p>
+          </div>
+          <div class="phone">
+            <span><i class="fa-solid fa-phone"></i></span>
+            <p>0356 ??? ???</p>
+          </div>
+          <div class="mail">
+            <span><i class="fa-brands fa-github"></i></span>
+            <p>letanloc-tlooc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

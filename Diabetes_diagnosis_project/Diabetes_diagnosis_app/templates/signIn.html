@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'reset.css'%}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'sign.css' %}" />
+    <title>Đăng nhập</title>
+  </head>
+
+  <body>
+    <section class="login">
+      <form action="">
+        <h1>ĐĂNG NHẬP</h1>
+        <div class="input-group">
+          <input type="text" placeholder="Tên đăng nhập" />
+          <label for=""><i class="fa-solid fa-user"></i></label>
+        </div>
+        <div class="input-group mar-bottom">
+          <input type="password" placeholder="Mật khẩu" />
+          <label for=""><i class="fa-solid fa-lock"></i></label>
+        </div>
+        <a class="forgot-pass" href="">Quên mật khẩu?</a>
+        <button>Đăng nhập</button>
+        <p>Chưa có tài khoản? <a href="{% url 'signUp' %}">Đăng kí</a></p>
+      </form>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+{% extends 'index.html' %} 
+{% block title %}Chuẩn Đoán Bệnh{% endblock %} 
+{% block content %}
+{% if message == "Success_load" %}
+<section class="alerts" style="background-color: #12c99b;">
+  <span><i class="fa-solid fa-circle-check"></i>Lưu Thành Công</span>
+</section>
+{% endif %}
+<section class="banner-about"></section>
+<section class="diagnosis">
+    <div class="container">
+        <h1>CHẨN ĐOÁN BỆNH</h1>
+        <form  action="{% url 'LoadInfo' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>THÔNG TIN</h2>
+            <!-- -->
+            
+            <!-- -->
+            <div class="input-group">
+                <label for="checkup_date"><i class="fa-solid fa-calendar-days"></i></label>
+                <input id="date" type="date" name="checkup_date" required value="{{ request.POST.checkup_date }}">
+            </div>
+            <!-- -->
+            <div class="input-group">
+                <label for="age"><i class="fa-solid fa-calendar-day"></i></label>
+                <input type="number" id="age" name="age" placeholder="Tuổi" value="{{ age|default_if_none:'' }}">
+            </div>
+        
+            <div class="input-group">
+                <label for="hypertension"><i style="padding-right: 10px;" class="fa-solid fa-heart-pulse"></i>Huyết áp: </label>
+                <input type="radio" id="hypertension_normal" name="hypertension" value="0" {% if hypertension == 0 %} checked {% endif %}>
+                <label for="hypertension_normal">Bình thường</label>
+                <input type="radio" id="hypertension_high" name="hypertension" value="1" {% if hypertension == 1 %} checked {% endif %}>
+                <label for="hypertension_high">Cao</label>
+            </div>
+        
+            <div class="input-group">
+                <label for="heart_disease"><i style="padding-right: 10px;" class="fa-solid fa-heart-circle-bolt"></i>Bệnh tim: </label>
+                <input type="radio" id="heart_normal" name="heart_disease" value="0" {% if heart_disease == 0 %} checked {% endif %}>
+                <label for="heart_normal">Bình thường</label>
+                <input type="radio" id="heart_disease" name="heart_disease" value="1" {% if heart_disease == 1 %} checked {% endif %}>
+                <label for="heart_disease">Bất thường</label>
+            </div>
+        
+            <div class="input-group">
+                <label for="bmi"><i class="fa-solid fa-chart-line"></i></label>
+                <input type="number" id="bmi" name="bmi" step="any" min="10" max="99" placeholder="Chỉ số BMI" value="{{ bmi|default_if_none:'' }}">
+            </div>
+            <!-- -->
+            <div class="input-group">
+                <label for="HbA1c_level"><i class="fa-solid fa-square-h"></i></label>
+                <input type="number" id="hba1c" name="HbA1c_level" max="9" min="3" step="any" placeholder="Chỉ số HbA1c" value="{{ HbA1c_level|default_if_none:'' }}">
+            </div>
+            <!-- -->
+            <div class="input-group">
+                <label for="blood_glucose_level"><i class="fa-solid fa-chart-simple"></i></label>
+                <input type="number" id="blood-glucose" name="blood_glucose_level" min="80" max="300" placeholder="Chỉ số Blood Glucose" value="{{ blood_glucose_level|default_if_none:'' }}">
+            </div>
+            <!-- -->
+
+            <div class="input-group">
+                <label for="ketqua"><i style="margin-right: 15px ;" class="fa-solid fa-hand-holding-medical"></i>  Kết quả:</label>
+                {% if ketqua %}
+                <input type="text" id="result" name="ketqua" placeholder="Kết quả" required value="{{ ketqua }}">{% endif %}
+            </div>
+            <div class="input-group">
+                <label for="accuracy"><i style="margin-right: 15px ;" class="fa-solid fa-star-of-life"></i>  Độ chính xác : </label>
+                {% if accuracy %}
+                <input style="width: 90px ;" type="number" id="accuracy" name="accuracy" placeholder="Độ chính xác" required value="{{ accuracy }}" ><span style="font-size: 20px ;">%</span> 
+                {% endif %} 
+            </div>
+
+
+
+            <div class="input-group">
+                <input type="file" name="csv_file" accept=".csv">
+            </div>
+            <button style="left: 20%; transform: translateX(0)" class="btn-read" value="read_file" type="submit" name="action">Đọc file</button>
+            <button style="left: 20%; margin:0px 20px; transform: translateX(0);" value="predict" class="btn-access" type="submit" name="action">Dự đoán</button>
+            
+        </form>
+        
+    </div>
+</section>
+<script>
+    let d = new Date();
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    let year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    let formattedDate = [year, month, day].join('-');
+    document.getElementById("date").value = formattedDate;
+    const alerts = document.querySelector(".alerts")
+    function alertsToggle() {
+      alerts.classList.remove("hide");
+      alerts.classList.add("show");
+      setTimeout(() => {
+        alerts.classList.remove("show");
+        alerts.classList.add("hide");
+      }, 2000);
+    }
+    alertsToggle()
+  </script>
+{% endblock %}
